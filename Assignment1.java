@@ -11,7 +11,7 @@ public class Assignment1 {
         final String COLOR_GREEN_BOLD = "\033[33;1m";
         final String RESET = "\033[0m";
 
-        final String DASHBOARD = "\u1F4B0"+" Welcome to Smart Banking App";
+        final String DASHBOARD = "Welcome to Smart Banking App";
         final String ADD_ACCOUNT = "Open New Account";
         final String DEPOSIT_MONEY = "Deposit Money";
         final String WITHDRAW_MONEY = "Withdraw Money";
@@ -23,8 +23,10 @@ public class Assignment1 {
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
         String screen = DASHBOARD;
+        int[] idArray = new int[0];
 
         do {
+    
             final String APP_TITLE = String.format("%s%s%s",
             COLOR_BLUE_BOLD, screen, RESET);
 
@@ -34,6 +36,7 @@ public class Assignment1 {
             switch (screen){
 
                 case DASHBOARD:
+
                 System.out.println("\t[1]. Open New Account");
                 System.out.println("\t[2]. Deposit Money");
                 System.out.println("\t[3]. Withdraw Money");
@@ -57,9 +60,24 @@ public class Assignment1 {
                     }
                     break;
 
-                    
-                case ADD_ACCOUNT:
 
+                case ADD_ACCOUNT:
+                
+
+                boolean valid;
+
+                do {
+                    valid = true;
+                    if (idArray.length !=0) System.out.printf("\tID: SDB-%05d ",idArray[idArray.length-1]+1);  // automatic
+                    else System.out.printf("\tID: SDB-%05d ",1);
+                    System.out.println();
+
+                    
+                    
+
+
+                    
+                } while (true);
 
 
 
