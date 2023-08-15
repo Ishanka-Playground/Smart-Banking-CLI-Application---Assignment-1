@@ -24,7 +24,7 @@ public class Assignment1 {
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
         String screen = DASHBOARD;
-        String[] idArray = new String[0];
+        int[] idArray = new int[0];
         double[] balanceArray = new double[0];
         String[] nameArray = new String[0];
 
@@ -39,11 +39,6 @@ public class Assignment1 {
             switch (screen){
 
                 case DASHBOARD:
-
-                    System.out.println(Arrays.toString(nameArray));
-                    System.out.println(Arrays.toString(idArray));
-                    System.out.println(Arrays.toString(balanceArray));
-
 
                 System.out.println("\t[1]. Open New Account");
                 System.out.println("\t[2]. Deposit Money");
@@ -128,7 +123,7 @@ public class Assignment1 {
                     } while (!valid);
 
                     
-                    String[] newIdArray = new String[idArray.length+1];
+                    int[] newIdArray = new int[idArray.length+1];
                     double[] newBalanceArray = new double[balanceArray.length + 1];
                     String[] newNameArray = new String[nameArray.length + 1];
 
@@ -138,13 +133,14 @@ public class Assignment1 {
                         newBalanceArray[i] = balanceArray[i];
                     }
 
-                    newIdArray[newIdArray.length-1]= id;
+                    newIdArray[newIdArray.length-1]= newIdArray.length;
                     newNameArray[newNameArray.length-1] = name;
                     newBalanceArray[newBalanceArray.length-1] = initialDeposit;
 
                     idArray = newIdArray;
                     nameArray = newNameArray;
                     balanceArray = newBalanceArray;
+
 
                     System.out.println();
                     System.out.printf(SUCCESS_MSG, 
