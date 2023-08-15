@@ -24,6 +24,7 @@ public class Assignment1 {
 
         String screen = DASHBOARD;
         int[] idArray = new int[0];
+        double[] balance = new double[0];
 
         do {
     
@@ -63,54 +64,70 @@ public class Assignment1 {
 
                 case ADD_ACCOUNT:
                 
-                boolean valid;
-                String name;
-                do {
+                    boolean valid;
+                    String name;
+                    String id = "";
 
-                    // ID
-                    valid = true;
-                    if (idArray.length !=0) System.out.printf("\tID: SDB-%05d ",idArray[idArray.length-1]+1);  // automatic
-                    else System.out.printf("\tID: SDB-%05d ",1);
-                    System.out.println();
+                    do {
 
-                    // Name
-                    System.out.print("Name :");
-                    name = SCANNER.nextLine().strip();
+                        // ID
+                        valid = true;
+                        
+                        if (idArray.length !=0) {
+                            System.out.printf("\tID: SDB-%05d ",idArray[idArray.length-1]+1); // automatic
+                            id = String.format("SDB-%05d", idArray[idArray.length-1]+1);
+                        }  
+                        else {
+                            System.out.printf("\tID: SDB-%05d ",1);
+                            id = String.format("SDB-%05d", 1);
 
-                    if (name.isBlank()){
-                        System.out.printf(ERROR_MSG, "Name can't be empty");
-                        valid = false;
-                        continue;
-                    }
-                    for (int i = 0; i < name.length(); i++) {
-                        if (!(Character.isLetter(name.charAt(i)) || 
-                            Character.isSpaceChar(name.charAt(i))) ) {
-                            System.out.printf(ERROR_MSG, "Invalid name");
-                            valid = false;
-                            break;
                         }
-                    }
-                    if (valid == false)break; // to speed
 
-                    // Initial Payment
-                    
-                    
-                } while (true);
+                        System.out.println();
 
+                        // Name
+                        System.out.print("\tName :");
+                        name = SCANNER.nextLine().strip();
 
+                        if (name.isBlank()){
+                            System.out.printf(ERROR_MSG, "Name can't be empty");
+                            valid = false;
+                            continue;
+                        }
+                        for (int i = 0; i < name.length(); i++) {
+                            if (!(Character.isLetter(name.charAt(i)) || 
+                                Character.isSpaceChar(name.charAt(i))) ) {
+                                System.out.printf(ERROR_MSG, "Invalid name");
+                                valid = false;
+                                break;
+                            }
+                        }
 
+                    } while (!valid);
+    
+                
+                    //Initial Payment
+                    double initialDeposit;
+                    do {
+                        valid = true;
+                        System.out.print("\tInitial Deposit : Rs ");
+                        initialDeposit = SCANNER.nextDouble();
+                            if (initialDeposit < 5000){
+                                System.out.printf(ERROR_MSG, "Insuficient fund");
+                                valid = false;
+                                continue;
+                            }             
+                    } while (!valid);
 
-
-
-
-
-
-
-
-
-
-
-
+                    System.out.println();
+                    System.out.printf(SUCCESS_MSG,String.format("%s:%s has been saved successfully",id, name));
+                    System.out.print("\tDo you want to continue adding (Y/n)?");
+                    Scanner scanner = new Scanner(System.in);
+                    if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
+                    scanner.nextLine();
+                    SCANNER.nextLine();
+                    screen = DASHBOARD;
+                    break;
 
 
 
