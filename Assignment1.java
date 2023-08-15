@@ -63,19 +63,37 @@ public class Assignment1 {
 
                 case ADD_ACCOUNT:
                 
-
                 boolean valid;
-
+                String name;
                 do {
+
+                    // ID
                     valid = true;
                     if (idArray.length !=0) System.out.printf("\tID: SDB-%05d ",idArray[idArray.length-1]+1);  // automatic
                     else System.out.printf("\tID: SDB-%05d ",1);
                     System.out.println();
 
-                    
-                    
+                    // Name
+                    System.out.print("Name :");
+                    name = SCANNER.nextLine().strip();
 
+                    if (name.isBlank()){
+                        System.out.printf(ERROR_MSG, "Name can't be empty");
+                        valid = false;
+                        continue;
+                    }
+                    for (int i = 0; i < name.length(); i++) {
+                        if (!(Character.isLetter(name.charAt(i)) || 
+                            Character.isSpaceChar(name.charAt(i))) ) {
+                            System.out.printf(ERROR_MSG, "Invalid name");
+                            valid = false;
+                            break;
+                        }
+                    }
+                    if (valid == false)break; // to speed
 
+                    // Initial Payment
+                    
                     
                 } while (true);
 
