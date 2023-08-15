@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Assignment1 {
@@ -38,6 +39,11 @@ public class Assignment1 {
             switch (screen){
 
                 case DASHBOARD:
+
+                    System.out.println(Arrays.toString(nameArray));
+                    System.out.println(Arrays.toString(idArray));
+                    System.out.println(Arrays.toString(balanceArray));
+
 
                 System.out.println("\t[1]. Open New Account");
                 System.out.println("\t[2]. Deposit Money");
@@ -136,6 +142,9 @@ public class Assignment1 {
                     newNameArray[newNameArray.length-1] = name;
                     newBalanceArray[newBalanceArray.length-1] = initialDeposit;
 
+                    idArray = newIdArray;
+                    nameArray = newNameArray;
+                    balanceArray = newBalanceArray;
 
                     System.out.println();
                     System.out.printf(SUCCESS_MSG, 
@@ -144,7 +153,6 @@ public class Assignment1 {
                     if (SCANNER.nextLine().strip().toUpperCase().equals("Y")) continue;
                     screen = DASHBOARD;
                     break;
-
 
 
             }
