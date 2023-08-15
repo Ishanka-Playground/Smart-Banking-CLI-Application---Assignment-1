@@ -11,8 +11,8 @@ public class Assignment1 {
         final String COLOR_GREEN_BOLD = "\033[33;1m";
         final String RESET = "\033[0m";
 
-        final String DASHBOARD = "\u1F4B0 Welcome to Smart Banking App";
-        final String ADD_ACCOUNT = "Open new Account";
+        final String DASHBOARD = "\u1F4B0"+" Welcome to Smart Banking App";
+        final String ADD_ACCOUNT = "Open New Account";
         final String DEPOSIT_MONEY = "Deposit Money";
         final String WITHDRAW_MONEY = "Withdraw Money";
         final String TRANSFER_MONEY = "Transfer Money";
@@ -24,7 +24,63 @@ public class Assignment1 {
 
         String screen = DASHBOARD;
 
+        do {
+            final String APP_TITLE = String.format("%s%s%s",
+            COLOR_BLUE_BOLD, screen, RESET);
 
+            System.out.println(CLEAR);
+            System.out.println("\t" + APP_TITLE + "\n");
+
+            switch (screen){
+
+                case DASHBOARD:
+                System.out.println("\t[1]. Open New Account");
+                System.out.println("\t[2]. Deposit Money");
+                System.out.println("\t[3]. Withdraw Money");
+                System.out.println("\t[4]. Transfer Money");
+                System.out.println("\t[5]. Check Account Balance");
+                System.out.println("\t[6]. Drop Existing Account");
+                System.out.println("\t[7]. Exit\n");
+                System.out.print("\tEnter an option to continue: ");
+                int option = SCANNER.nextInt();
+                SCANNER.nextLine();
+
+                    switch (option){
+                        case 1: screen = ADD_ACCOUNT; break;
+                        case 2: screen = DEPOSIT_MONEY; break;
+                        case 3: screen = WITHDRAW_MONEY; break;
+                        case 4: screen = TRANSFER_MONEY; break;
+                        case 5: screen = CHECK_AC_BALANCE; break;
+                        case 6: screen = DROP_EXISTING_AC; break;
+                        case 7: System.out.println(CLEAR); System.exit(0);
+                        default: continue;
+                    }
+                    break;
+
+                    
+                case ADD_ACCOUNT:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+            
+        } while (true);
 
 
 
