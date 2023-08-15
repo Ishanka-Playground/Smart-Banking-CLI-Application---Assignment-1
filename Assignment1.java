@@ -23,8 +23,9 @@ public class Assignment1 {
         final String SUCCESS_MSG = String.format("\t%s%s%s\n", COLOR_GREEN_BOLD, "%s", RESET);
 
         String screen = DASHBOARD;
-        int[] idArray = new int[0];
-        double[] balance = new double[0];
+        String[] idArray = new String[0];
+        double[] balanceArray = new double[0];
+        String[] nameArray = new String[0];
 
         do {
     
@@ -112,6 +113,7 @@ public class Assignment1 {
                         valid = true;
                         System.out.print("\tInitial Deposit : Rs ");
                         initialDeposit = SCANNER.nextDouble();
+                        SCANNER.nextLine();
                             if (initialDeposit < 5000){
                                 System.out.printf(ERROR_MSG, "Insuficient fund");
                                 valid = false;
@@ -119,13 +121,27 @@ public class Assignment1 {
                             }             
                     } while (!valid);
 
+                    
+                    String[] newIdArray = new String[idArray.length+1];
+                    double[] newBalanceArray = new double[balanceArray.length + 1];
+                    String[] newNameArray = new String[nameArray.length + 1];
+
+                    for (int i = 0; i < nameArray.length; i++) {
+                        newIdArray[i]=idArray[i];
+                        newNameArray[i] = nameArray[i];
+                        newBalanceArray[i] = balanceArray[i];
+                    }
+
+                    newIdArray[newIdArray.length-1]= id;
+                    newNameArray[newNameArray.length-1] = name;
+                    newBalanceArray[newBalanceArray.length-1] = initialDeposit;
+
+
                     System.out.println();
-                    System.out.printf(SUCCESS_MSG,String.format("%s:%s has been saved successfully",id, name));
-                    System.out.print("\tDo you want to continue adding (Y/n)?");
-                    Scanner scanner = new Scanner(System.in);
-                    if (scanner.nextLine().strip().toUpperCase().equals("Y")) continue;
-                    scanner.nextLine();
-                    SCANNER.nextLine();
+                    System.out.printf(SUCCESS_MSG, 
+                        String.format("%s:%s has been saved successfully", id, name));
+                    System.out.print("\tDo you want to continue adding (Y/n)? ");
+                    if (SCANNER.nextLine().strip().toUpperCase().equals("Y")) continue;
                     screen = DASHBOARD;
                     break;
 
